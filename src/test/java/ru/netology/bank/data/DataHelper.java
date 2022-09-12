@@ -1,8 +1,12 @@
 package ru.netology.bank.data;
 
+import com.github.javafaker.Faker;
 import lombok.Value;
 
+import java.util.Locale;
+
 public class DataHelper {
+    private static Faker faker = new Faker(new Locale("en"));
 
     @Value
     public static class AuthInfo {
@@ -11,13 +15,19 @@ public class DataHelper {
     }
 
     public static AuthInfo getAuthInfo() {
-
         return new AuthInfo("vasya", "qwerty123");
     }
 
-    public static AuthInfo getAuthInfoWrong() {
+    public static String generateRandomLogin() {
+        return faker.name().username();
+    }
 
-        return new AuthInfo("vasya", "qwerty");
+    public static String generateRandomPass() {
+        return faker.internet().password();
+    }
+
+    public static AuthInfo genRandomUser() {
+        return new AuthInfo(generateRandomLogin(), generateRandomPass());
     }
 
     @Value

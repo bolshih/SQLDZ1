@@ -28,4 +28,12 @@ public class SQLHelper {
         }
         return null;
     }
+    @SneakyThrows
+    public static void cleanDatabase(){
+        var conn = getConnect();
+        runner.execute(conn, "DELETE FROM auth_codes");
+        runner.execute(conn, "DELETE FROM card_transactions");
+        runner.execute(conn, "DELETE FROM cards");
+        runner.execute(conn, "DELETE FROM users");
+    }
 }

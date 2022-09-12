@@ -13,6 +13,7 @@ public class CabinetPage {
     private SelenideElement heading = $("[data-test-id=dashboard]");
 
     public CabinetPage() {
+
         heading.shouldBe(visible);
     }
 }
